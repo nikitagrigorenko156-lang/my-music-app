@@ -86,3 +86,35 @@
 
   html, body { overflow: auto; height: auto; }
 }
+
+@media (max-width: 768px) {
+  .track-row {
+    display: grid !important;
+    grid-template-columns: 20px 1fr auto !important;
+    gap: 8px !important;
+    padding: 10px 8px !important;
+  }
+  .track-duration {
+    display: none !important;
+  }
+  .track-info {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  .track-title {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+  .track-artist-album {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+}
