@@ -86,3 +86,14 @@
   .volume-wrap { display: none; }
   .eq-bars { display: none; }
 }
+
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+  #main-content {
+    overflow-y: auto;
+    height: auto;
+  }
+}
