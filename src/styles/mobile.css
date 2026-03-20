@@ -2,6 +2,24 @@
   body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto auto;
+    overflow: auto;
+    height: auto;
+  }
+
+  #main-content {
+    grid-row: 1;
+    grid-column: 1;
+    padding: 16px 14px;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  #player {
+    grid-row: 2;
+    grid-column: 1;
+    grid-template-columns: 1fr auto;
+    padding: 0 12px;
+    gap: 8px;
   }
 
   #sidebar {
@@ -35,20 +53,15 @@
     border-radius: 8px;
     flex: 1;
     justify-content: center;
+    border: none;
+    transform: none !important;
   }
 
   .nav-icon { font-size: 20px; width: auto; }
 
-  #main-content {
-    grid-row: 1;
-    grid-column: 1;
-    padding: 20px 16px;
-  }
-
-  #player {
-    grid-row: 2;
-    grid-column: 1;
-  }
+  .player-progress { display: none; }
+  .volume-wrap { display: none; }
+  .eq-bars { display: none; }
 
   .player-inner {
     grid-template-columns: 1fr auto;
@@ -58,21 +71,9 @@
     gap: 8px;
   }
 
-  .now-playing {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  .player-right {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  .player-controls {
-    grid-row: 2;
-    grid-column: 1 / -1;
-  }
-
+  .now-playing { grid-row: 1; grid-column: 1; }
+  .player-right { grid-row: 1; grid-column: 2; }
+  .player-controls { grid-row: 2; grid-column: 1 / -1; }
   .player-progress { width: 100%; }
 
   .hero { padding: 24px 20px; }
@@ -83,17 +84,5 @@
     gap: 12px;
   }
 
-  .volume-wrap { display: none; }
-  .eq-bars { display: none; }
-}
-
-@media (max-width: 768px) {
-  html, body {
-    overflow: auto;
-    height: auto;
-  }
-  #main-content {
-    overflow-y: auto;
-    height: auto;
-  }
+  html, body { overflow: auto; height: auto; }
 }
