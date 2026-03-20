@@ -1,0 +1,33 @@
+stages:
+  - deploy
+
+# GitLab Pages — деплой статики
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r index.html src public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# Проверка структуры файлов (линт)
+validate:
+  stage: deploy
+  script:
+    - echo "Checking project structure..."
+    - test -f index.html
+    - test -f src/app.js
+    - test -f src/api/spotify.js
+    - test -f src/api/mock.js
+    - test -f src/store/state.js
+    - test -f src/components/Player.js
+    - test -f src/components/Sidebar.js
+    - test -f src/components/Catalog.js
+    - test -f src/components/Search.js
+    - echo "✅ All files present"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
