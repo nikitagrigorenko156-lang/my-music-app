@@ -1035,3 +1035,32 @@ body::before {
 .track-row {
   grid-template-columns: 24px 1fr auto auto !important;
 }
+
+/* ── TRACK ROW FINAL FIX ── */
+.track-row {
+  display: grid !important;
+  grid-template-columns: 28px 1fr auto auto !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 9px 10px !important;
+}
+.track-info {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+.track-title {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.track-artist-album {
+  font-size: 11px !important;
+  color: var(--text2) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
