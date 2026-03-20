@@ -913,3 +913,110 @@ body::before {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.75); }
 }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  border-radius: 20px;
+  padding: 32px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #150830 0%, #0e1530 45%, #091525 100%);
+  border: 1px solid rgba(139,92,246,0.18);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 70% 50%, rgba(139,92,246,0.13) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  position: relative;
+}
+.hero-sub {
+  font-size: 13px;
+  color: #8a9bbf;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 360px;
+  position: relative;
+}
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 6px 20px rgba(249,115,22,0.32);
+  position: relative;
+}
+.hero-btn:hover {
+  transform: scale(1.05) translateY(-1px);
+  box-shadow: 0 10px 28px rgba(249,115,22,0.42);
+}
+
+/* ── SECTION ── */
+.section-mb { margin-bottom: 28px; }
+.section-more {
+  font-size: 11px;
+  color: #7ca5ff;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.section-more:hover { opacity: 1; }
+
+/* ── SPOTIFY BANNER ── */
+.spotify-auth-banner {
+  background: linear-gradient(135deg, rgba(30,215,96,0.07), rgba(30,215,96,0.03));
+  border: 1px solid rgba(30,215,96,0.18);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.auth-info p {
+  font-size: 12px;
+  color: #8a9bbf;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* ── TRACK ROW fix ── */
+.track-row {
+  grid-template-columns: 26px 1fr auto auto;
+}
+.track-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+.search-bar { position: relative; }
