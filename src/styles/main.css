@@ -1020,3 +1020,18 @@ body::before {
   max-width: 180px;
 }
 .search-bar { position: relative; }
+
+/* ── TRACK TITLE FIX ── */
+.track-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100% !important;
+}
+.track-info {
+  min-width: 0;
+  overflow: hidden;
+}
+.track-row {
+  grid-template-columns: 24px 1fr auto auto !important;
+}
