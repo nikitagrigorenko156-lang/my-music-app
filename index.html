@@ -996,3 +996,25 @@ bindPlayerEvents();
 </script>
 </body>
 </html>
+<script>
+// Patch Spotify login button
+document.addEventListener('click', e => {
+  if (e.target.id === 'sp-login-btn') {
+    const params = new URLSearchParams({
+      client_id: 'b3ff3a993c2a466cbcf40c1dbe2eaf67',
+      response_type: 'token',
+      redirect_uri: 'https://nikitagrigorenko156-lang.github.io/my-music-app/',
+      scope: 'user-read-private user-top-read user-library-read playlist-read-private',
+      show_dialog: 'true',
+    });
+    window.location = 'https://accounts.spotify.com/authorize?' + params;
+  }
+});
+
+// Handle token on page load
+const hash = window.location.hash;
+if (hash.includes('access_token')) {
+  const token = new URLSearchParams(hash.substring(1)).get('access_token');
+  if (token) { localStorage.setItem('sp_token', token); window.location.hash = ''; location.reload(); }
+}
+</script>
