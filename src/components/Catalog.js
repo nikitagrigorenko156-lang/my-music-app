@@ -79,7 +79,6 @@ function trackRow(track, index, state, queue) {
               title="${isLiked ? 'Убрать из любимых' : 'В любимые'}">
         ${isLiked ? '❤️' : '🤍'}
       </button>
-      <div class="track-duration">${formatTime(track.duration_ms)}</div>
     </div>
   `;
 }
