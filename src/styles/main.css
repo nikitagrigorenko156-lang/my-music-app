@@ -1091,3 +1091,28 @@ body::before {
   font-size: 11px;
   color: var(--text2);
 }
+
+/* ── TRACK MOBILE OVERRIDE ── */
+@media (max-width: 900px) {
+  .track-num { display: none !important; }
+  .track-duration { display: none !important; }
+  .track-row {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+  .track-info {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  .track-title {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+  .track-artist-album {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+}
