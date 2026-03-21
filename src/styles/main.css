@@ -1064,3 +1064,30 @@ body::before {
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+
+/* ── TRACK ROW MOBILE FINAL ── */
+.tracks-list .track-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+}
+.tracks-list .track-info {
+  min-width: 0;
+  overflow: hidden;
+}
+.tracks-list .track-title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tracks-list .track-artist-album {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  color: var(--text2);
+}
