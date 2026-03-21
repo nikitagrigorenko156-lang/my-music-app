@@ -70,7 +70,7 @@ function trackRow(track, index, state, queue) {
     <div class="track-row ${isPlaying ? 'is-playing' : ''}"
          data-track-id="${track.id}"
          data-queue='${JSON.stringify(queue.map(t => t.id))}'>
-      <div class="track-info">
+<div class="track-info" style="min-width:0;overflow:hidden;flex:1"> 
         <div class="track-title">${track.title}</div>
         <div class="track-artist-album">${track.artist}${track.album ? ' · ' + track.album : ''}</div>
       </div>
