@@ -994,26 +994,44 @@ renderPage();
 bindPlayerEvents();
 </script>
 </body>
-</html>
 <script>
-// Patch Spotify login button
-document.addEventListener('click', e => {
-  if (e.target.id === 'sp-login-btn') {
-    const params = new URLSearchParams({
-      client_id: 'b3ff3a993c2a466cbcf40c1dbe2eaf67',
-      response_type: 'code',
-      redirect_uri: 'https://nikitagrigorenko156-lang.github.io/my-music-app/',
-      scope: 'user-read-private user-top-read user-library-read playlist-read-private',
-      show_dialog: 'true',
-    });
-    window.location = 'https://accounts.spotify.com/authorize?' + params;
-  }
-});
+const SP_CLIENT = 'b3ff3a993c2a466cbcf40c1dbe2eaf67';
+const SP_REDIRECT = 'https://nikitagrigorenko156-lang.github.io/my-music-app/';
+const SP_SCOPE = 'user-read-private user-top-read user-library-read playlist-read-private';
 
-// Handle token on page load
-const hash = window.location.hash;
-if (hash.includes('access_token')) {
-  const token = new URLSearchParams(hash.substring(1)).get('access_token');
-  if (token) { localStorage.setItem('sp_token', token); window.location.hash = ''; location.reload(); }
+async function spLogin() {
+  const verifier = Array.from(crypto.getRandomValues(new Uint8Array(32))).map(b=>b.toString(16).padStart(2,'0')).join('');
+  localStorage.setItem('sp_verifier', verifier);
+  const encoder = new TextEncoder();
+  const data = encoder.encode(verifier);
+  const digest = await crypto.subtle.digest('SHA-256', data);
+  const challenge = btoa(String.fromCharCode(...new Uint8Array(digest))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const params = new URLSearchParams({client_id:SP_CLIENT,response_type:'code',redirect_uri:SP_REDIRECT,scope:SP_SCOPE,code_challenge_method:'S256',code_challenge:challenge});
+  window.location = 'https://accounts.spotify.com/authorize?' + params;
 }
+
+async function handleSpotifyCode() {
+  const code = new URLSearchParams(window.location.search).get('code');
+  if (!code) return;
+  window.history.replaceState({}, '', window.location.pathname);
+  const verifier = localStorage.getItem('sp_verifier');
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams({client_id:SP_CLIENT,grant_type:'authorization_code',code,redirect_uri:SP_REDIRECT,code_verifier:verifier})
+  });
+  const data = await res.json();
+  if (data.access_token) {
+    localStorage.setItem('sp_token', data.access_token);
+    location.reload();
+  }
+}
+
+handleSpotifyCode();
+
+document.addEventListener('click', e => {
+  if (e.target.id === 'sp-login-btn') spLogin();
+});
 </script>
+</body>
+</html>
